@@ -1,0 +1,97 @@
+/* admin.css — estilos específicos do painel administrativo
+   (usa as variáveis de cor definidas em ../style.css) */
+
+.admin-body{
+  min-height:100vh;
+}
+
+/* ---------- Login ---------- */
+.admin-login-wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.admin-login-card{
+  width:100%;
+  max-width:400px;
+}
+.admin-login-card h2{
+  font-size:1.5rem;
+  color:var(--cream);
+  margin-bottom:24px;
+}
+
+/* ---------- Cabeçalho do painel ---------- */
+.admin-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 28px;
+  border-bottom:1px solid var(--line);
+}
+.admin-header-user{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+/* ---------- Conteúdo ---------- */
+.admin-main{
+  max-width:1100px;
+  margin:0 auto;
+  padding:32px 28px 64px;
+  display:flex;
+  flex-direction:column;
+  gap:48px;
+}
+.admin-section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+}
+.admin-section-head h2{
+  font-size:1.3rem;
+  color:var(--cream);
+}
+
+.admin-table-wrap{
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+.admin-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.88rem;
+}
+.admin-table th, .admin-table td{
+  padding:12px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  white-space:nowrap;
+}
+.admin-table td:nth-child(3), .admin-table td:nth-child(4){
+  white-space:normal;
+}
+.admin-table thead th{
+  background:var(--charcoal);
+  color:var(--cream-dim);
+  text-transform:uppercase;
+  font-size:0.75rem;
+  letter-spacing:0.04em;
+}
+.admin-table tbody tr:last-child td{border-bottom:none;}
+.admin-sub{color:var(--cream-dim); font-size:0.8rem;}
+
+.admin-status-select{
+  background:var(--ink);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:6px 10px;
+  color:var(--cream);
+  font-family:inherit;
+  font-size:0.85rem;
+}

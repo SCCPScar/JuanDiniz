@@ -30,6 +30,14 @@ if ($idServico === '' || $data === '' || $hora === '') {
     exit;
 }
 
+// Confere se a data/hora escolhida já não passou
+$dataHoraAgendamento = DateTime::createFromFormat('Y-m-d H:i', "$data $hora");
+if (!$dataHoraAgendamento || $dataHoraAgendamento < new DateTime()) {
+    http_response_code(400);
+    echo json_encode(['erro' => 'Escolha uma data e hora futuras.']);
+    exit;
+}
+
 // Confere se o serviço existe
 $stmt = mysqli_prepare($conexao, 'SELECT id_servico FROM servicos WHERE id_servico = ?');
 mysqli_stmt_bind_param($stmt, 'i', $idServico);

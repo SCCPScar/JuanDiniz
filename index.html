@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Barbearia de Odin</title>
 <meta name="description" content="Barbearia de Odin em Leiria — cortes clássicos, barba na navalha e agendamento online.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Pirata+One&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@
       <button type="button" class="nav-cta-ghost" data-open-modal="cadastro">Cadastrar</button>
     </div>
     <div class="nav-auth" id="navAuthLoggedIn" hidden>
-      <span class="nav-user">Olá, <strong id="navUserNome"></strong></span>
+      <span class="nav-user"><span class="avatar-iniciais" id="navUserAvatar" aria-hidden="true"></span>Olá, <strong id="navUserNome"></strong></span>
       <button type="button" class="nav-link-btn" id="btnLogout">Sair</button>
     </div>
     <a class="nav-cta" href="#agendar">Agendar horário</a>
@@ -165,6 +166,31 @@
   </div>
 </section>
 
+<section class="section" id="depoimentos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Depoimentos</p>
+      <h2>Quem já sentou na cadeira</h2>
+    </div>
+    <div class="depoimentos-grid">
+      <blockquote class="depoimento-card">
+        <p>Corte impecável e o ambiente é outro nível. Viro cliente fixo.</p>
+        <footer>— Ricardo Almeida</footer>
+      </blockquote>
+      <blockquote class="depoimento-card">
+        <p>A barba na navalha é a melhor que já fiz em Leiria. Recomendo demais.</p>
+        <footer>— Miguel Santos</footer>
+      </blockquote>
+      <blockquote class="depoimento-card">
+        <p>Agendar pelo site é rápido e nunca teve confusão de horário. Show.</p>
+        <footer>— Tiago Ferreira</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="pole-divider" aria-hidden="true"></div>
+
 <section class="section" id="horarios">
   <div class="wrap hours-grid">
     <div>
@@ -206,6 +232,11 @@
 
           <button type="submit" class="btn-primary auth-submit">Confirmar agendamento</button>
         </form>
+
+        <div class="meus-agendamentos">
+          <h3>Meus agendamentos</h3>
+          <ul id="listaMeusAgendamentos" class="lista-agendamentos"></ul>
+        </div>
       </div>
 
       <div id="agendamentoDeslogado">
@@ -219,6 +250,32 @@
         <a class="btn-primary" href="https://wa.me/351000000000" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="pole-divider" aria-hidden="true"></div>
+
+<section class="section" id="contato">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Fale connosco</p>
+      <h2>Alguma dúvida? Mande uma mensagem</h2>
+    </div>
+    <form id="formContato" class="auth-form contato-form" novalidate>
+      <label for="contatoNome">Nome</label>
+      <input type="text" id="contatoNome" name="nome" required autocomplete="name">
+
+      <label for="contatoEmail">E-mail</label>
+      <input type="email" id="contatoEmail" name="email" required autocomplete="email">
+
+      <label for="contatoMensagem">Mensagem</label>
+      <textarea id="contatoMensagem" name="mensagem" rows="4" required></textarea>
+
+      <p class="auth-error" id="contatoErro" hidden></p>
+      <p class="auth-success" id="contatoSucesso" hidden></p>
+
+      <button type="submit" class="btn-primary auth-submit">Enviar mensagem</button>
+    </form>
   </div>
 </section>
 
@@ -238,12 +295,14 @@
 
 <p class="footer-credits">
     Website desenvolvido por Juan Diniz<br>
-    Concebido e implementado em Leiria, Portugal.
+    Concebido e implementado em Leiria, Portugal.<br>
+    <a href="admin/">Área administrativa</a>
 </p>
 </footer>
 
 <script src="script.js"></script>
 <script src="auth-frontend.js"></script>
 <script src="agendamento.js"></script>
+<script src="contato.js"></script>
 </body>
 </html>

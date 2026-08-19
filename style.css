@@ -484,3 +484,143 @@ footer{
   font-size:0.85rem;
 }
 footer .brand{font-size:1rem; display:block; margin-bottom:8px;}
+.footer-credits a{text-decoration:underline; text-decoration-color:var(--line);}
+.footer-credits a:hover, .footer-credits a:focus-visible{color:var(--brass-light);}
+
+/* ---------- Spinner de carregamento em botões ---------- */
+.btn-carregando{
+  position:relative;
+  color:transparent !important;
+  pointer-events:none;
+}
+.btn-carregando::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:16px;
+  height:16px;
+  margin:-8px 0 0 -8px;
+  border:2px solid rgba(255,255,255,0.35);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:girar 0.6s linear infinite;
+}
+@keyframes girar{
+  to{ transform:rotate(360deg); }
+}
+
+/* ---------- Avatar com iniciais (menu, quando logado) ---------- */
+.avatar-iniciais{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:26px;
+  height:26px;
+  margin-right:8px;
+  border-radius:50%;
+  background:var(--brass);
+  color:var(--ink);
+  font-size:0.78rem;
+  font-weight:700;
+  vertical-align:middle;
+}
+
+/* ---------- Depoimentos ---------- */
+.depoimentos-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+.depoimento-card{
+  background:var(--charcoal);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:28px 24px;
+  margin:0;
+}
+.depoimento-card p{
+  color:var(--cream);
+  font-style:italic;
+  line-height:1.6;
+}
+.depoimento-card p::before{content:"\201C";}
+.depoimento-card p::after{content:"\201D";}
+.depoimento-card footer{
+  margin-top:16px;
+  padding:0;
+  text-align:left;
+  font-size:0.85rem;
+  color:var(--brass-light);
+}
+@media (max-width:800px){
+  .depoimentos-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- Meus agendamentos ---------- */
+.meus-agendamentos{
+  margin-top:32px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.meus-agendamentos h3{
+  font-size:1.05rem;
+  color:var(--cream);
+  margin-bottom:14px;
+}
+.lista-agendamentos{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.agendamento-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--ink);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:12px 14px;
+}
+.agendamento-item div{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  font-size:0.88rem;
+  color:var(--cream-dim);
+}
+.agendamento-item strong{color:var(--cream);}
+.agendamento-status{
+  text-transform:capitalize;
+  font-size:0.78rem;
+  color:var(--brass-light);
+}
+.agendamento-item[data-status="Cancelado"] .agendamento-status{color:#e07a6a;}
+.agendamento-item[data-status="Concluído"] .agendamento-status{color:#7bc79e;}
+.agendamento-vazio{
+  color:var(--cream-dim);
+  font-size:0.88rem;
+  list-style:none;
+}
+
+/* ---------- Formulário de contato ---------- */
+.contato-form{
+  max-width:480px;
+  margin:0 auto;
+}
+.auth-form textarea{
+  background:var(--ink);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:11px 14px;
+  color:var(--cream);
+  font-family:inherit;
+  font-size:0.95rem;
+  resize:vertical;
+}
+.auth-form textarea:focus-visible{
+  outline:none;
+  border-color:var(--brass-light);
+}

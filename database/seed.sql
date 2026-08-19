@@ -30,3 +30,9 @@ INSERT INTO agendamentos (id_cliente, id_servico, barbeiro, data, hora, status, 
   (SELECT id_servico FROM servicos WHERE nome = 'Corte clássico'),
   'Odin', '2026-07-15', '14:00', 'Pendente', NULL
 );
+
+-- Administrador padrão para testar o painel em /admin
+-- login: admin@barbeariaodin.pt   senha: admin123
+-- (troque essa senha depois de importar, criando outro admin e apagando este)
+INSERT INTO admins (nome, email, senha_hash) VALUES
+('Administrador', 'admin@barbeariaodin.pt', '$2y$12$CUW5sULu.PkwM5xTjh/XheHKTJEG9BUipCfIt0w.gWy3COrwB9r3W');

@@ -5,7 +5,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // BOTÕES
-    const btnLogin = document.querySelector('[data-open-modal="login"]');
     const btnCadastroAbrir = document.querySelectorAll('[data-open-modal="cadastro"]');
     const btnLoginAbrir = document.querySelectorAll('[data-open-modal="login"]');
     const btnLogout = document.getElementById("btnLogout");
@@ -24,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLoggedOut = document.getElementById("navAuthLoggedOut");
     const navLoggedIn = document.getElementById("navAuthLoggedIn");
     const navUserNome = document.getElementById("navUserNome");
+    const navUserAvatar = document.getElementById("navUserAvatar");
 
     function abrirModal(modal) {
         if (modal) modal.hidden = false;
@@ -45,10 +45,30 @@ document.addEventListener("DOMContentLoaded", () => {
         el.hidden = true;
     }
 
+    // Marca com borda vermelha os campos com problema; some assim que o
+    // usuário mexe em qualquer um deles de novo.
+    function destacarCampos(campos) {
+        campos.forEach((campo) => {
+            if (!campo) return;
+            campo.classList.add("campo-erro");
+            campo.addEventListener("input", () => campo.classList.remove("campo-erro"), { once: true });
+        });
+    }
+
+    function limparDestaque(campos) {
+        campos.forEach((campo) => campo && campo.classList.remove("campo-erro"));
+    }
+
+    function definirCarregando(botao, carregando) {
+        botao.classList.toggle("btn-carregando", carregando);
+        botao.disabled = carregando;
+    }
+
     function mostrarLogado(usuario) {
         if (navLoggedOut) navLoggedOut.hidden = true;
         if (navLoggedIn) navLoggedIn.hidden = false;
         if (navUserNome) navUserNome.textContent = usuario.nome;
+        if (navUserAvatar) navUserAvatar.textContent = usuario.nome.trim().charAt(0).toUpperCase();
     }
 
     function mostrarDeslogado() {
@@ -92,8 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         esconderErro(loginErro);
 
-        const email = document.getElementById("loginEmail").value.trim();
-        const senha = document.getElementById("loginSenha").value;
+        const campoEmail = document.getElementById("loginEmail");
+        const campoSenha = document.getElementById("loginSenha");
+        const email = campoEmail.value.trim();
+        const senha = campoSenha.value;
+        const botao = formLogin.querySelector(".auth-submit");
+
+        limparDestaque([campoEmail, campoSenha]);
+        definirCarregando(botao, true);
 
         try {
             const resp = await fetch("api/login.php", {
@@ -105,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!resp.ok) {
                 mostrarErro(loginErro, dados.erro || "Não foi possível entrar.");
+                destacarCampos([campoEmail, campoSenha]);
                 return;
             }
 
@@ -113,6 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
             location.reload();
         } catch {
             mostrarErro(loginErro, "Erro de conexão. Tente novamente.");
+        } finally {
+            definirCarregando(botao, false);
         }
     });
 
@@ -121,9 +150,16 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         esconderErro(cadastroErro);
 
-        const nome = document.getElementById("cadastroNome").value.trim();
-        const email = document.getElementById("cadastroEmail").value.trim();
-        const senha = document.getElementById("cadastroSenha").value;
+        const campoNome = document.getElementById("cadastroNome");
+        const campoEmail = document.getElementById("cadastroEmail");
+        const campoSenha = document.getElementById("cadastroSenha");
+        const nome = campoNome.value.trim();
+        const email = campoEmail.value.trim();
+        const senha = campoSenha.value;
+        const botao = formCadastro.querySelector(".auth-submit");
+
+        limparDestaque([campoNome, campoEmail, campoSenha]);
+        definirCarregando(botao, true);
 
         try {
             const resp = await fetch("api/cadastro.php", {
@@ -135,6 +171,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!resp.ok) {
                 mostrarErro(cadastroErro, dados.erro || "Não foi possível criar a conta.");
+
+                const mensagem = dados.erro || "";
+                if (mensagem.includes("senha")) destacarCampos([campoSenha]);
+                else if (mensagem.includes("mail")) destacarCampos([campoEmail]);
+                else destacarCampos([campoNome, campoEmail, campoSenha]);
+
                 return;
             }
 
@@ -143,6 +185,8 @@ document.addEventListener("DOMContentLoaded", () => {
             location.reload();
         } catch {
             mostrarErro(cadastroErro, "Erro de conexão. Tente novamente.");
+        } finally {
+            definirCarregando(botao, false);
         }
     });
 

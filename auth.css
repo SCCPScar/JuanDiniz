@@ -4,6 +4,11 @@
   align-items:center;
   gap:16px;
 }
+/* Sem isso, o atributo hidden não tem efeito aqui: a regra acima
+   (display:flex) tem a mesma especificidade do [hidden] padrão do
+   navegador e vence por vir depois — Entrar/Cadastrar e Olá/Sair
+   apareciam ao mesmo tempo no menu. */
+.nav-auth[hidden]{display:none;}
 .nav-link-btn{
   background:none;
   border:none;
@@ -112,6 +117,16 @@
   color:#e07a6a;
   font-size:0.85rem;
   margin-top:14px;
+}
+.auth-success{
+  color:#7bc79e;
+  font-size:0.85rem;
+  margin-top:14px;
+}
+
+/* Campo com erro de validação */
+.auth-form input.campo-erro{
+  border-color:#e07a6a;
 }
 .auth-submit{
   margin-top:22px;

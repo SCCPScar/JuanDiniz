@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel administrativo — A Barbearia de Odin</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../auth.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <div class="brand"><img src="../logo-odin.png" alt="Logo Barba de Odin" class="brand-logo">Painel <span>Odin</span></div>
+  <div class="admin-header-user">
+    <span class="nav-user">Olá, <strong id="adminNome"></strong></span>
+    <button type="button" class="nav-link-btn" id="btnAdminLogout">Sair</button>
+  </div>
+</header>
+
+<main class="admin-main">
+  <section class="admin-section">
+    <div class="admin-section-head">
+      <h2>Agendamentos</h2>
+      <button type="button" class="nav-link-btn" id="btnAtualizarAgendamentos">Atualizar lista</button>
+    </div>
+    <p class="auth-error" id="agendamentosErro" hidden></p>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Serviço</th>
+            <th>Barbeiro</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabelaAgendamentos">
+          <tr><td colspan="6">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <div class="admin-section-head">
+      <h2>Mensagens de contato</h2>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Mensagem</th>
+            <th>Recebida em</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabelaMensagens">
+          <tr><td colspan="4">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>

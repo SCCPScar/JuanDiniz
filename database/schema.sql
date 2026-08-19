@@ -50,3 +50,22 @@ CREATE TABLE IF NOT EXISTS agendamentos (
   INDEX idx_agendamentos_data_hora (data, hora),
   INDEX idx_agendamentos_barbeiro_data_hora (barbeiro, data, hora)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Administradores da barbearia (login separado do login de clientes,
+-- usado no painel /admin para ver e atualizar todos os agendamentos)
+CREATE TABLE IF NOT EXISTS admins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  senha_hash VARCHAR(255) NOT NULL,
+  criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Mensagens enviadas pelo formulário de contato do site
+CREATE TABLE IF NOT EXISTS mensagens_contato (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  mensagem TEXT NOT NULL,
+  enviado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
