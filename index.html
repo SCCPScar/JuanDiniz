@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Barbearia de Odin</title>
+<meta name="description" content="Barbearia de Odin em Leiria — cortes clássicos, barba na navalha e agendamento online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Pirata+One&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<a href="#servicos" class="skip-link">Saltar para o conteúdo</a>
+
+<header>
+  <nav>
+    <div class="brand"><img src="logo-odin.png" alt="Logo Barba de Odin" class="brand-logo">A Barbearia de<span>Odin</span></div>
+
+    <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#horarios">Horários</a></li>
+    </ul>
+    <div class="nav-auth" id="navAuthLoggedOut">
+      <button type="button" class="nav-link-btn" data-open-modal="login">Entrar</button>
+      <button type="button" class="nav-cta-ghost" data-open-modal="cadastro">Cadastrar</button>
+    </div>
+    <div class="nav-auth" id="navAuthLoggedIn" hidden>
+      <span class="nav-user">Olá, <strong id="navUserNome"></strong></span>
+      <button type="button" class="nav-link-btn" id="btnLogout">Sair</button>
+    </div>
+    <a class="nav-cta" href="#agendar">Agendar horário</a>
+  </nav>
+</header>
+
+<!-- ---------- Modal: Login ---------- -->
+<div class="auth-overlay" id="modalLogin" hidden>
+  <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitulo">
+    <button type="button" class="auth-close" data-close-modal aria-label="Fechar">✕</button>
+    <p class="eyebrow">Bem-vindo de volta</p>
+    <h2 id="loginTitulo">Entrar na sua conta</h2>
+    <form id="formLogin" class="auth-form" novalidate>
+      <label for="loginEmail">E-mail</label>
+      <input type="email" id="loginEmail" name="email" required autocomplete="email">
+
+      <label for="loginSenha">Senha</label>
+      <input type="password" id="loginSenha" name="senha" required autocomplete="current-password">
+
+      <p class="auth-error" id="loginErro" hidden></p>
+
+      <button type="submit" class="btn-primary auth-submit">Entrar</button>
+    </form>
+    <p class="auth-switch">Ainda não tem conta? <button type="button" data-open-modal="cadastro">Cadastre-se</button></p>
+  </div>
+</div>
+
+<!-- ---------- Modal: Cadastro ---------- -->
+<div class="auth-overlay" id="modalCadastro" hidden>
+  <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="cadastroTitulo">
+    <button type="button" class="auth-close" data-close-modal aria-label="Fechar">✕</button>
+    <p class="eyebrow">Junte-se ao clã</p>
+    <h2 id="cadastroTitulo">Criar sua conta</h2>
+    <form id="formCadastro" class="auth-form" novalidate>
+      <label for="cadastroNome">Nome</label>
+      <input type="text" id="cadastroNome" name="nome" required autocomplete="name">
+
+      <label for="cadastroEmail">E-mail</label>
+      <input type="email" id="cadastroEmail" name="email" required autocomplete="email">
+
+      <label for="cadastroSenha">Senha</label>
+      <input type="password" id="cadastroSenha" name="senha" required minlength="6" autocomplete="new-password">
+
+      <p class="auth-error" id="cadastroErro" hidden></p>
+
+      <button type="submit" class="btn-primary auth-submit">Cadastrar</button>
+    </form>
+    <p class="auth-switch">Já tem conta? <button type="button" data-open-modal="login">Entrar</button></p>
+  </div>
+</div>
+
+<div class="pole-divider" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Seu visual é sua armadura. Venha esculpir a sua</p>
+    <h1>Onde os Guerreiros <em>Vikings</em> saem como <em>Deuses</em></h1>
+    <p>Barba talhada como nos salões antigos, corte navalhado e um ambiente onde seu tempo é o tempo de Asgard — do jeito que um Semideus merece.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#agendar">Agendar horário</a>
+      <a class="btn-ghost" href="#servicos">Ver serviços</a>
+    </div>
+  </div>
+</section>
+
+<div class="pole-divider" aria-hidden="true"></div>
+
+<section class="section" id="servicos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Serviços</p>
+      <h2>O que fazemos bem</h2>
+      <p>Navalha afiada, mente calma. O seu momento é agora</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="icon">✂</span>
+        <h3>Corte clássico</h3>
+        <p>Tesoura e máquina, acabamento na navalha e finalização com produto.</p>
+        <span class="service-price">€ 15</span>
+      </div>
+      <div class="service-card">
+        <span class="icon">🪒</span>
+        <h3>Barba na navalha</h3>
+        <p>Toalha quente, óleo pré-barba e acabamento perfeito no fio da navalha.</p>
+        <span class="service-price">€ 12</span>
+      </div>
+      <div class="service-card">
+        <span class="icon">💈</span>
+        <h3>Combo completo</h3>
+        <p>Corte + barba + sobrancelha. O pacote de quem não abre mão do detalhe.</p>
+        <span class="service-price">€ 24</span>
+      </div>
+      <div class="service-card">
+        <span class="icon">👦</span>
+        <h3>Corte infantil</h3>
+        <p>Para os pequenos clientes, com paciência e sem choro.</p>
+        <span class="service-price">€ 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="sobre">
+  <div class="wrap about-inner">
+    <div class="about-text">
+      <p class="eyebrow">Sobre a casa</p>
+      <h2>Navalha afiada, mente calma. O seu momento é agora.</h2>
+      <p>Começamos numa esquina pequena e crescemos pela confiança de quem senta na cadeira e sabe que vai sair bem. Nossos barbeiros são treinados no clássico e afiados no moderno.</p>
+      <p>Aqui, café é cortesia e conversa é opcional — mas sempre bem-vinda.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <strong>25+</strong>
+          <span>anos de casa</span>
+        </div>
+        <div class="stat">
+          <strong>4</strong>
+          <span>barbeiros</span>
+        </div>
+        <div class="stat">
+          <strong>4.9</strong>
+          <span>avaliação média</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <img src="images123.jpg" alt="Interior da Barbearia de Odin">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="horarios">
+  <div class="wrap hours-grid">
+    <div>
+      <div class="section-head" style="text-align:left; margin:0 0 32px;">
+        <p class="eyebrow">Horários</p>
+        <h2>Quando estamos de portas abertas</h2>
+      </div>
+      <ul class="hours-list">
+        <li><span>Segunda a sexta</span><span>09h – 19h</span></li>
+        <li><span>Sábado</span><span>09h – 17h</span></li>
+        <li><span>Domingo</span><span>Fechado</span></li>
+      </ul>
+    </div>
+    <div class="contact-block" id="agendar">
+      <div class="section-head" style="text-align:left; margin:0 0 32px;">
+        <p class="eyebrow">Contato</p>
+        <h2 style="font-size:1.6rem;">Agende seu horário</h2>
+      </div>
+
+      <div id="agendamentoLogado" hidden>
+        <form id="formAgendamento" class="auth-form" novalidate>
+          <label for="agendaServico">Serviço</label>
+          <select id="agendaServico" name="id_servico" required></select>
+
+          <label for="agendaBarbeiro">Barbeiro (opcional)</label>
+          <input type="text" id="agendaBarbeiro" name="barbeiro" placeholder="Sem preferência">
+
+          <label for="agendaData">Data</label>
+          <input type="date" id="agendaData" name="data" required>
+
+          <label for="agendaHora">Hora</label>
+          <input type="time" id="agendaHora" name="hora" required>
+
+          <label for="agendaObs">Observações (opcional)</label>
+          <input type="text" id="agendaObs" name="observacoes">
+
+          <p class="auth-error" id="agendaErro" hidden></p>
+          <p class="auth-success" id="agendaSucesso" hidden></p>
+
+          <button type="submit" class="btn-primary auth-submit">Confirmar agendamento</button>
+        </form>
+      </div>
+
+      <div id="agendamentoDeslogado">
+        <p>Você precisa <button type="button" class="nav-link-btn" data-open-modal="login">entrar</button> ou <button type="button" class="nav-link-btn" data-open-modal="cadastro">criar uma conta</button> para agendar um horário online.</p>
+      </div>
+
+      <p style="margin-top:24px;">📍 Rua das Tesouras, 123 — Leiria</p>
+      <p>📞 <a href="tel:+351000000000">+351 000 000 000</a></p>
+      <p>✉️ <a href="mailto:contato@barbadeodin.pt">contato@barbadeodin.pt</a></p>
+      <div style="margin-top:24px;">
+        <a class="btn-primary" href="https://wa.me/351000000000" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pole-divider" aria-hidden="true"></div>
+
+<section class="section final-cta">
+  <div class="wrap">
+    <p class="eyebrow">Sem enrolação</p>
+    <h2>Seu cabelo já sabe que é hora.</h2>
+    <a class="btn-primary" href="https://wa.me/351000000000" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">Barba de Odin</span>
+  <p>© 2026 Barbearia Barba de Odin. Todos os direitos reservados.</p>
+
+<p class="footer-credits">
+    Website desenvolvido por Juan Diniz<br>
+    Concebido e implementado em Leiria, Portugal.
+</p>
+</footer>
+
+<script src="script.js"></script>
+<script src="auth-frontend.js"></script>
+<script src="agendamento.js"></script>
+</body>
+</html>
