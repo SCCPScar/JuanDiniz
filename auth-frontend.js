@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ---------- Verifica sessão atual ----------
     async function verificarSessao() {
         try {
-            const resp = await fetch("/api/auth/me", { credentials: "include" });
+            const resp = await fetch("api/sessao.php");
             const dados = await resp.json();
 
             if (dados.usuario) {
@@ -96,10 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const senha = document.getElementById("loginSenha").value;
 
         try {
-            const resp = await fetch("/api/auth/login", {
+            const resp = await fetch("api/login.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                credentials: "include",
                 body: JSON.stringify({ email, senha }),
             });
             const dados = await resp.json();
@@ -127,10 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const senha = document.getElementById("cadastroSenha").value;
 
         try {
-            const resp = await fetch("/api/auth/cadastro", {
+            const resp = await fetch("api/cadastro.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                credentials: "include",
                 body: JSON.stringify({ nome, email, senha }),
             });
             const dados = await resp.json();
@@ -151,10 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ---------- Logout ----------
     btnLogout?.addEventListener("click", async () => {
         try {
-            await fetch("/api/auth/logout", {
-                method: "POST",
-                credentials: "include",
-            });
+            await fetch("api/logout.php", { method: "POST" });
         } finally {
             mostrarDeslogado();
             location.reload();

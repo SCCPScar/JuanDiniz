@@ -1,9 +1,8 @@
 -- schema.sql
 -- Importe este arquivo pelo phpMyAdmin (aba "Importar") para criar o banco
 -- "barbearia_odin" e todas as tabelas de uma vez, prontas para usar.
---
--- Se preferir criar o banco manualmente no phpMyAdmin primeiro, é só
--- selecioná-lo e importar este arquivo sem a linha CREATE DATABASE/USE.
+
+SET NAMES utf8mb4;
 
 CREATE DATABASE IF NOT EXISTS barbearia_odin
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

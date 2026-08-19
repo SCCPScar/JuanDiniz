@@ -2,8 +2,6 @@
 // Popula o formulário de agendamento e envia para a API
 
 (() => {
-  const API_BASE = '/api/barbearia';
-
   const blocoLogado = document.getElementById('agendamentoLogado');
   const blocoDeslogado = document.getElementById('agendamentoDeslogado');
   const form = document.getElementById('formAgendamento');
@@ -25,7 +23,7 @@
 
   async function carregarServicos() {
     try {
-      const resp = await fetch(`${API_BASE}/servicos`);
+      const resp = await fetch('api/servicos.php');
       const servicos = await resp.json();
 
       selectServico.innerHTML = servicos.map(s =>
@@ -38,7 +36,7 @@
 
   async function verificarLoginEExibirFormulario() {
     try {
-      const resp = await fetch('/api/auth/me');
+      const resp = await fetch('api/sessao.php');
       const dados = await resp.json();
 
       if (dados.usuario) {
@@ -68,7 +66,7 @@
       };
 
       try {
-        const resp = await fetch(`${API_BASE}/agendamentos`, {
+        const resp = await fetch('api/agendar.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(corpo),
