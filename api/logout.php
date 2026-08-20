@@ -1,6 +1,6 @@
 <?php
 // logout.php
-// Encerra a sessão do usuário.
+// Termina a sessão do utilizador.
 
 require_once __DIR__ . '/conexao.php';
 

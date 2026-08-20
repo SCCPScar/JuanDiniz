@@ -1,6 +1,6 @@
 <?php
 // admin/agendamentos.php
-// Lista TODOS os agendamentos (de todos os clientes) — só para administradores.
+// Lista TODAS as marcações (de todos os clientes) — só para administradores.
 
 require_once __DIR__ . '/../conexao.php';
 

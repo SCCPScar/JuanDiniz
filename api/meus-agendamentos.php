@@ -1,6 +1,6 @@
 <?php
 // meus-agendamentos.php
-// Lista os agendamentos do usuário logado.
+// Lista as marcações do utilizador com sessão iniciada.
 
 require_once __DIR__ . '/conexao.php';
 

@@ -1,6 +1,6 @@
 <?php
 // admin/mensagens.php
-// Lista as mensagens recebidas pelo formulário de contato.
+// Lista as mensagens recebidas pelo formulário de contacto.
 
 require_once __DIR__ . '/../conexao.php';
 

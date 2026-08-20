@@ -1,7 +1,8 @@
 <?php
 // config.php
-// Dados de acesso ao MySQL. Ajuste aqui se o seu usuário/senha do MySQL
-// forem diferentes. O padrão do XAMPP/WAMP é usuário "root" e senha em branco.
+// Dados de acesso ao MySQL. Ajuste aqui se o seu utilizador/palavra-passe do
+// MySQL forem diferentes. Por definição, o XAMPP/WAMP usa o utilizador "root"
+// e palavra-passe em branco.
 
 define('DB_HOST', 'localhost');
 define('DB_USUARIO', 'root');

@@ -1,6 +1,6 @@
 <?php
-// cadastro.php
-// Cria uma conta nova e já loga o usuário (sessão do PHP).
+// registar.php
+// Cria uma conta nova e já inicia a sessão do utilizador (sessão do PHP).
 
 require_once __DIR__ . '/conexao.php';
 
@@ -18,7 +18,7 @@ $senha = $dados['senha'] ?? '';
 
 if ($nome === '' || $email === '' || $senha === '') {
     http_response_code(400);
-    echo json_encode(['erro' => 'Preencha nome, e-mail e senha.']);
+    echo json_encode(['erro' => 'Preencha o nome, o e-mail e a palavra-passe.']);
     exit;
 }
 
@@ -30,7 +30,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 if (strlen($senha) < 6) {
     http_response_code(400);
-    echo json_encode(['erro' => 'A senha precisa ter pelo menos 6 caracteres.']);
+    echo json_encode(['erro' => 'A palavra-passe deve ter pelo menos 6 caracteres.']);
     exit;
 }
 
@@ -48,7 +48,7 @@ if ($existente) {
     exit;
 }
 
-// password_hash cuida de gerar o hash da senha com segurança (nunca salvamos senha em texto puro)
+// password_hash cuida de gerar o hash da palavra-passe com segurança (nunca guardamos a palavra-passe em texto simples)
 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
 $stmt = mysqli_prepare($conexao, 'INSERT INTO usuarios (nome, email, senha_hash) VALUES (?, ?, ?)');

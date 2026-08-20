@@ -1,6 +1,6 @@
 <?php
 // agendar.php
-// Cria um novo agendamento para o usuário logado.
+// Cria uma nova marcação para o utilizador com sessão iniciada.
 
 require_once __DIR__ . '/conexao.php';
 
@@ -66,7 +66,7 @@ if ($barbeiroValor !== null) {
     }
 }
 
-// Busca o cliente ligado a este usuário (pelo e-mail) ou cria um novo
+// Busca o cliente ligado a este utilizador (pelo e-mail) ou cria um novo
 $emailUsuario = $_SESSION['usuario_email'];
 $nomeUsuario = $_SESSION['usuario_nome'];
 

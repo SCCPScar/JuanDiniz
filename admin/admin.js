@@ -1,6 +1,6 @@
 // admin.js
-// Login e painel administrativo. Um arquivo só, ele decide o que fazer
-// olhando quais elementos existem na página (login ou painel).
+// Login e painel administrativo. Um único ficheiro, que decide o que
+// fazer consoante os elementos que existem na página (login ou painel).
 
 function definirCarregando(botao, carregando) {
   botao.classList.toggle('btn-carregando', carregando);
@@ -20,7 +20,7 @@ const formAdminLogin = document.getElementById('formAdminLogin');
 if (formAdminLogin) {
   const erro = document.getElementById('adminLoginErro');
 
-  // Se já estiver logado como admin, pula direto pro painel
+  // Se já tiver sessão de administrador iniciada, salta diretamente para o painel
   fetch('../api/admin/sessao.php')
     .then((r) => r.json())
     .then((dados) => {
@@ -54,7 +54,7 @@ if (formAdminLogin) {
 
       location.href = 'painel.html';
     } catch {
-      erro.textContent = 'Erro de conexão. Tente novamente.';
+      erro.textContent = 'Erro de ligação. Tente novamente.';
       erro.hidden = false;
     } finally {
       definirCarregando(botao, false);
@@ -98,7 +98,7 @@ if (corpoTabelaAgendamentos) {
       const agendamentos = await resp.json();
 
       if (!Array.isArray(agendamentos) || agendamentos.length === 0) {
-        corpoTabelaAgendamentos.innerHTML = '<tr><td colspan="6">Nenhum agendamento ainda.</td></tr>';
+        corpoTabelaAgendamentos.innerHTML = '<tr><td colspan="6">Ainda não há agendamentos.</td></tr>';
         return;
       }
 
@@ -165,10 +165,10 @@ if (corpoTabelaAgendamentos) {
 
       if (!resp.ok) {
         const dados = await resp.json();
-        alert(dados.erro || 'Não foi possível atualizar o status.');
+        alert(dados.erro || 'Não foi possível atualizar o estado.');
       }
     } catch {
-      alert('Erro de conexão. Tente novamente.');
+      alert('Erro de ligação. Tente novamente.');
     } finally {
       select.disabled = false;
     }

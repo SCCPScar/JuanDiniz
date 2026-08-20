@@ -1,8 +1,8 @@
 <?php
 // contato.php
-// Recebe o formulário de contato e guarda no banco (tabela mensagens_contato).
-// Assim dá pra ver as mensagens recebidas pelo phpMyAdmin, sem precisar
-// configurar um servidor de e-mail.
+// Recebe o formulário de contacto e guarda na base de dados (tabela
+// mensagens_contato). Assim é possível ver as mensagens recebidas pelo
+// phpMyAdmin, sem ser preciso configurar um servidor de e-mail.
 
 require_once __DIR__ . '/conexao.php';
 
@@ -20,7 +20,7 @@ $mensagem = trim($dados['mensagem'] ?? '');
 
 if ($nome === '' || $email === '' || $mensagem === '') {
     http_response_code(400);
-    echo json_encode(['erro' => 'Preencha nome, e-mail e mensagem.']);
+    echo json_encode(['erro' => 'Preencha o nome, o e-mail e a mensagem.']);
     exit;
 }
 
@@ -35,4 +35,4 @@ mysqli_stmt_bind_param($stmt, 'sss', $nome, $email, $mensagem);
 mysqli_stmt_execute($stmt);
 
 http_response_code(201);
-echo json_encode(['ok' => true, 'mensagem' => 'Mensagem enviada! Em breve entraremos em contato.']);
+echo json_encode(['ok' => true, 'mensagem' => 'Mensagem enviada! Entraremos em contacto em breve.']);

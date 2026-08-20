@@ -100,6 +100,7 @@ nav{
   font-size:1.5rem;
   font-weight:400;
   color:var(--cream);
+  text-decoration:none;
   letter-spacing:0.02em;
 }
 .brand span{color:var(--brass-light);}
@@ -204,9 +205,9 @@ nav{
   }
 
   /* nav.menu-open é alternado pelo script.js no clique do hambúrguer —
-     mostra o menu de links E os botões de entrar/cadastrar juntos,
-     em vez de só o .nav-links como antes (isso escondia login/cadastro
-     por completo no mobile) */
+     mostra o menu de links E os botões de entrar/registar juntos,
+     em vez de só o .nav-links como antes (isso escondia login/registo
+     por completo no telemóvel) */
   nav.menu-open .nav-links,
   nav.menu-open .nav-auth{
     display:flex;
@@ -557,7 +558,15 @@ footer .brand{font-size:1rem; display:block; margin-bottom:8px;}
   .depoimentos-grid{grid-template-columns:1fr;}
 }
 
-/* ---------- Meus agendamentos ---------- */
+/* ---------- Link para a área de cliente (depois de marcar um horário) ---------- */
+.ver-conta-link{
+  margin-top:20px;
+  text-align:center;
+  font-size:0.88rem;
+}
+.ver-conta-link a{color:var(--brass-light);}
+
+/* ---------- Meus agendamentos (usado em conta.html) ---------- */
 .meus-agendamentos{
   margin-top:32px;
   padding-top:24px;
@@ -623,4 +632,59 @@ footer .brand{font-size:1rem; display:block; margin-bottom:8px;}
 .auth-form textarea:focus-visible{
   outline:none;
   border-color:var(--brass-light);
+}
+
+/* ---------- Páginas dedicadas de Entrar / Registar ---------- */
+.auth-page-wrap{
+  min-height:calc(100vh - 81px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px 24px;
+}
+.auth-page-wrap .auth-modal{
+  max-width:420px;
+  box-shadow:none;
+}
+
+/* ---------- Página "A minha conta" ---------- */
+.conta-main{
+  max-width:720px;
+  margin:0 auto;
+  padding:64px 24px 96px;
+}
+.conta-cabecalho{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:40px;
+}
+.conta-avatar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:var(--brass);
+  color:var(--ink);
+  font-size:1.4rem;
+  font-weight:700;
+  flex-shrink:0;
+}
+.conta-cabecalho h1{
+  font-size:1.6rem;
+  color:var(--cream);
+}
+.conta-cabecalho p{
+  color:var(--cream-dim);
+  font-size:0.92rem;
+}
+.conta-acoes{
+  margin-bottom:40px;
+}
+.conta-secao-titulo{
+  font-size:1.15rem;
+  color:var(--cream);
+  margin-bottom:16px;
 }

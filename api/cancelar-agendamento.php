@@ -1,6 +1,6 @@
 <?php
 // cancelar-agendamento.php
-// Cancela um agendamento do próprio usuário logado (muda o status para
+// Cancela uma marcação do próprio utilizador com sessão iniciada (muda o estado para
 // "Cancelado" — não apaga a linha, para manter o histórico).
 
 require_once __DIR__ . '/conexao.php';
@@ -28,7 +28,7 @@ if ($idAgendamento === '') {
 
 $email = $_SESSION['usuario_email'];
 
-// Só deixa cancelar um agendamento que pertença ao próprio usuário logado
+// Só deixa cancelar um agendamento que pertença ao próprio utilizador com sessão iniciada
 $stmt = mysqli_prepare($conexao, "
     SELECT agendamentos.id_agendamento
     FROM agendamentos

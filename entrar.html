@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar — A Barbearia de Odin</title>
+<meta name="description" content="Inicie sessão na sua conta da Barbearia de Odin para marcar o seu próximo horário.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Pirata+One&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="brand" href="index.html"><img src="logo-odin.png" alt="Logo Barba de Odin" class="brand-logo">A Barbearia de<span>Odin</span></a>
+
+    <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#horarios">Horário</a></li>
+    </ul>
+    <div class="nav-auth" id="navAuthLoggedOut">
+      <a class="nav-link-btn" href="entrar.html">Entrar</a>
+      <a class="nav-cta-ghost" href="registar.html">Registar</a>
+    </div>
+    <div class="nav-auth" id="navAuthLoggedIn" hidden>
+      <a class="nav-user" href="conta.html"><span class="avatar-iniciais" id="navUserAvatar" aria-hidden="true"></span>Olá, <strong id="navUserNome"></strong></a>
+      <button type="button" class="nav-link-btn" id="btnLogout">Terminar sessão</button>
+    </div>
+    <a class="nav-cta" href="index.html#agendar">Marcar horário</a>
+  </nav>
+</header>
+
+<main class="auth-page-wrap">
+  <div class="auth-modal">
+    <p class="eyebrow">Bem-vindo de volta</p>
+    <h2>Entrar na sua conta</h2>
+    <form id="formEntrar" class="auth-form" novalidate>
+      <label for="entrarEmail">E-mail</label>
+      <input type="email" id="entrarEmail" name="email" required autocomplete="email">
+
+      <label for="entrarPalavraPasse">Palavra-passe</label>
+      <input type="password" id="entrarPalavraPasse" name="senha" required autocomplete="current-password">
+
+      <p class="auth-error" id="entrarErro" hidden></p>
+
+      <button type="submit" class="btn-primary auth-submit">Entrar</button>
+    </form>
+    <p class="auth-switch">Ainda não tem conta? <a href="registar.html">Registe-se</a></p>
+  </div>
+</main>
+
+<footer>
+  <span class="brand">Barba de Odin</span>
+  <p>© 2026 Barbearia Barba de Odin. Todos os direitos reservados.</p>
+</footer>
+
+<script src="script.js"></script>
+<script src="auth-frontend.js"></script>
+<script src="entrar.js"></script>
+</body>
+</html>

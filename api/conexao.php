@@ -1,7 +1,8 @@
 <?php
 // conexao.php
-// Conecta ao banco MySQL (o mesmo banco que você vê no phpMyAdmin) e inicia
-// a sessão do usuário. Todo arquivo dentro de api/ começa incluindo este.
+// Liga à base de dados MySQL (a mesma que aparece no phpMyAdmin) e inicia
+// a sessão do utilizador. Todos os ficheiros dentro de api/ começam por
+// incluir este.
 
 require_once __DIR__ . '/config.php';
 
@@ -13,7 +14,7 @@ $conexao = mysqli_connect(DB_HOST, DB_USUARIO, DB_SENHA, DB_NOME);
 if (!$conexao) {
     http_response_code(500);
     echo json_encode([
-        'erro' => 'Não foi possível conectar ao banco de dados. Verifique se o MySQL está ligado e se o banco "barbearia_odin" existe (importe database/schema.sql pelo phpMyAdmin).',
+        'erro' => 'Não foi possível ligar à base de dados. Verifique se o MySQL está ligado e se a base de dados "barbearia_odin" existe (importe database/schema.sql pelo phpMyAdmin).',
     ]);
     exit;
 }

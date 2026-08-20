@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Barbearia de Odin</title>
-<meta name="description" content="Barbearia de Odin em Leiria — cortes clássicos, barba na navalha e agendamento online.">
+<meta name="description" content="Barbearia de Odin em Leiria — cortes clássicos, barba na navalha e marcação de horário online.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,74 +27,29 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#horarios">Horários</a></li>
+      <li><a href="#horarios">Horário</a></li>
     </ul>
     <div class="nav-auth" id="navAuthLoggedOut">
-      <button type="button" class="nav-link-btn" data-open-modal="login">Entrar</button>
-      <button type="button" class="nav-cta-ghost" data-open-modal="cadastro">Cadastrar</button>
+      <a class="nav-link-btn" href="entrar.html">Entrar</a>
+      <a class="nav-cta-ghost" href="registar.html">Registar</a>
     </div>
     <div class="nav-auth" id="navAuthLoggedIn" hidden>
-      <span class="nav-user"><span class="avatar-iniciais" id="navUserAvatar" aria-hidden="true"></span>Olá, <strong id="navUserNome"></strong></span>
-      <button type="button" class="nav-link-btn" id="btnLogout">Sair</button>
+      <a class="nav-user" href="conta.html"><span class="avatar-iniciais" id="navUserAvatar" aria-hidden="true"></span>Olá, <strong id="navUserNome"></strong></a>
+      <button type="button" class="nav-link-btn" id="btnLogout">Terminar sessão</button>
     </div>
-    <a class="nav-cta" href="#agendar">Agendar horário</a>
+    <a class="nav-cta" href="#agendar">Marcar horário</a>
   </nav>
 </header>
-
-<!-- ---------- Modal: Login ---------- -->
-<div class="auth-overlay" id="modalLogin" hidden>
-  <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="loginTitulo">
-    <button type="button" class="auth-close" data-close-modal aria-label="Fechar">✕</button>
-    <p class="eyebrow">Bem-vindo de volta</p>
-    <h2 id="loginTitulo">Entrar na sua conta</h2>
-    <form id="formLogin" class="auth-form" novalidate>
-      <label for="loginEmail">E-mail</label>
-      <input type="email" id="loginEmail" name="email" required autocomplete="email">
-
-      <label for="loginSenha">Senha</label>
-      <input type="password" id="loginSenha" name="senha" required autocomplete="current-password">
-
-      <p class="auth-error" id="loginErro" hidden></p>
-
-      <button type="submit" class="btn-primary auth-submit">Entrar</button>
-    </form>
-    <p class="auth-switch">Ainda não tem conta? <button type="button" data-open-modal="cadastro">Cadastre-se</button></p>
-  </div>
-</div>
-
-<!-- ---------- Modal: Cadastro ---------- -->
-<div class="auth-overlay" id="modalCadastro" hidden>
-  <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="cadastroTitulo">
-    <button type="button" class="auth-close" data-close-modal aria-label="Fechar">✕</button>
-    <p class="eyebrow">Junte-se ao clã</p>
-    <h2 id="cadastroTitulo">Criar sua conta</h2>
-    <form id="formCadastro" class="auth-form" novalidate>
-      <label for="cadastroNome">Nome</label>
-      <input type="text" id="cadastroNome" name="nome" required autocomplete="name">
-
-      <label for="cadastroEmail">E-mail</label>
-      <input type="email" id="cadastroEmail" name="email" required autocomplete="email">
-
-      <label for="cadastroSenha">Senha</label>
-      <input type="password" id="cadastroSenha" name="senha" required minlength="6" autocomplete="new-password">
-
-      <p class="auth-error" id="cadastroErro" hidden></p>
-
-      <button type="submit" class="btn-primary auth-submit">Cadastrar</button>
-    </form>
-    <p class="auth-switch">Já tem conta? <button type="button" data-open-modal="login">Entrar</button></p>
-  </div>
-</div>
 
 <div class="pole-divider" aria-hidden="true"></div>
 
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">Seu visual é sua armadura. Venha esculpir a sua</p>
+    <p class="eyebrow">O seu visual é a sua armadura. Venha esculpir a sua</p>
     <h1>Onde os Guerreiros <em>Vikings</em> saem como <em>Deuses</em></h1>
-    <p>Barba talhada como nos salões antigos, corte navalhado e um ambiente onde seu tempo é o tempo de Asgard — do jeito que um Semideus merece.</p>
+    <p>Barba talhada como nos salões antigos, corte à navalha e um ambiente onde o seu tempo é o tempo de Asgard — do jeito que um Semideus merece.</p>
     <div class="hero-ctas">
-      <a class="btn-primary" href="#agendar">Agendar horário</a>
+      <a class="btn-primary" href="#agendar">Marcar horário</a>
       <a class="btn-ghost" href="#servicos">Ver serviços</a>
     </div>
   </div>
@@ -113,7 +68,7 @@
       <div class="service-card">
         <span class="icon">✂</span>
         <h3>Corte clássico</h3>
-        <p>Tesoura e máquina, acabamento na navalha e finalização com produto.</p>
+        <p>Tesoura e máquina, acabamento à navalha e finalização com produto.</p>
         <span class="service-price">€ 15</span>
       </div>
       <div class="service-card">
@@ -125,13 +80,13 @@
       <div class="service-card">
         <span class="icon">💈</span>
         <h3>Combo completo</h3>
-        <p>Corte + barba + sobrancelha. O pacote de quem não abre mão do detalhe.</p>
+        <p>Corte + barba + sobrancelha. O pacote de quem não dispensa o pormenor.</p>
         <span class="service-price">€ 24</span>
       </div>
       <div class="service-card">
         <span class="icon">👦</span>
         <h3>Corte infantil</h3>
-        <p>Para os pequenos clientes, com paciência e sem choro.</p>
+        <p>Para os mais pequenos, com paciência e sem choro.</p>
         <span class="service-price">€ 10</span>
       </div>
     </div>
@@ -143,8 +98,8 @@
     <div class="about-text">
       <p class="eyebrow">Sobre a casa</p>
       <h2>Navalha afiada, mente calma. O seu momento é agora.</h2>
-      <p>Começamos numa esquina pequena e crescemos pela confiança de quem senta na cadeira e sabe que vai sair bem. Nossos barbeiros são treinados no clássico e afiados no moderno.</p>
-      <p>Aqui, café é cortesia e conversa é opcional — mas sempre bem-vinda.</p>
+      <p>Começámos numa esquina pequena e crescemos pela confiança de quem se senta na cadeira e sabe que vai sair bem. Os nossos barbeiros são treinados no clássico e afiados no moderno.</p>
+      <p>Aqui, o café é por conta da casa e a conversa é opcional — mas sempre bem-vinda.</p>
       <div class="about-stats">
         <div class="stat">
           <strong>25+</strong>
@@ -169,20 +124,20 @@
 <section class="section" id="depoimentos">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Depoimentos</p>
-      <h2>Quem já sentou na cadeira</h2>
+      <p class="eyebrow">Testemunhos</p>
+      <h2>Quem já se sentou na cadeira</h2>
     </div>
     <div class="depoimentos-grid">
       <blockquote class="depoimento-card">
-        <p>Corte impecável e o ambiente é outro nível. Viro cliente fixo.</p>
+        <p>Corte impecável e o ambiente é de outro nível. Tornei-me cliente fixo.</p>
         <footer>— Ricardo Almeida</footer>
       </blockquote>
       <blockquote class="depoimento-card">
-        <p>A barba na navalha é a melhor que já fiz em Leiria. Recomendo demais.</p>
+        <p>A barba à navalha é a melhor que já fiz em Leiria. Recomendo a cem por cento.</p>
         <footer>— Miguel Santos</footer>
       </blockquote>
       <blockquote class="depoimento-card">
-        <p>Agendar pelo site é rápido e nunca teve confusão de horário. Show.</p>
+        <p>Marcar pelo site é rápido e nunca tive confusões de horário. Não tenho razão de queixa.</p>
         <footer>— Tiago Ferreira</footer>
       </blockquote>
     </div>
@@ -195,19 +150,19 @@
   <div class="wrap hours-grid">
     <div>
       <div class="section-head" style="text-align:left; margin:0 0 32px;">
-        <p class="eyebrow">Horários</p>
+        <p class="eyebrow">Horário</p>
         <h2>Quando estamos de portas abertas</h2>
       </div>
       <ul class="hours-list">
         <li><span>Segunda a sexta</span><span>09h – 19h</span></li>
         <li><span>Sábado</span><span>09h – 17h</span></li>
-        <li><span>Domingo</span><span>Fechado</span></li>
+        <li><span>Domingo</span><span>Encerrado</span></li>
       </ul>
     </div>
     <div class="contact-block" id="agendar">
       <div class="section-head" style="text-align:left; margin:0 0 32px;">
-        <p class="eyebrow">Contato</p>
-        <h2 style="font-size:1.6rem;">Agende seu horário</h2>
+        <p class="eyebrow">Contacto</p>
+        <h2 style="font-size:1.6rem;">Marque o seu horário</h2>
       </div>
 
       <div id="agendamentoLogado" hidden>
@@ -230,22 +185,19 @@
           <p class="auth-error" id="agendaErro" hidden></p>
           <p class="auth-success" id="agendaSucesso" hidden></p>
 
-          <button type="submit" class="btn-primary auth-submit">Confirmar agendamento</button>
+          <button type="submit" class="btn-primary auth-submit">Confirmar marcação</button>
         </form>
 
-        <div class="meus-agendamentos">
-          <h3>Meus agendamentos</h3>
-          <ul id="listaMeusAgendamentos" class="lista-agendamentos"></ul>
-        </div>
+        <p class="ver-conta-link"><a href="conta.html">Ver os meus horários marcados →</a></p>
       </div>
 
       <div id="agendamentoDeslogado">
-        <p>Você precisa <button type="button" class="nav-link-btn" data-open-modal="login">entrar</button> ou <button type="button" class="nav-link-btn" data-open-modal="cadastro">criar uma conta</button> para agendar um horário online.</p>
+        <p>É necessário <a href="entrar.html">iniciar sessão</a> ou <a href="registar.html">criar uma conta</a> para marcar um horário online.</p>
       </div>
 
       <p style="margin-top:24px;">📍 Rua das Tesouras, 123 — Leiria</p>
       <p>📞 <a href="tel:+351000000000">+351 000 000 000</a></p>
-      <p>✉️ <a href="mailto:contato@barbadeodin.pt">contato@barbadeodin.pt</a></p>
+      <p>✉️ <a href="mailto:geral@barbadeodin.pt">geral@barbadeodin.pt</a></p>
       <div style="margin-top:24px;">
         <a class="btn-primary" href="https://wa.me/351000000000" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
       </div>
@@ -259,7 +211,7 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Fale connosco</p>
-      <h2>Alguma dúvida? Mande uma mensagem</h2>
+      <h2>Alguma dúvida? Envie-nos uma mensagem</h2>
     </div>
     <form id="formContato" class="auth-form contato-form" novalidate>
       <label for="contatoNome">Nome</label>
@@ -283,8 +235,8 @@
 
 <section class="section final-cta">
   <div class="wrap">
-    <p class="eyebrow">Sem enrolação</p>
-    <h2>Seu cabelo já sabe que é hora.</h2>
+    <p class="eyebrow">Sem demoras</p>
+    <h2>O seu cabelo já sabe que é altura.</h2>
     <a class="btn-primary" href="https://wa.me/351000000000" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
   </div>
 </section>

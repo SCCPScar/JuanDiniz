@@ -1,6 +1,6 @@
 <?php
 // admin/sessao.php
-// Diz ao painel se tem um administrador logado.
+// Diz ao painel se há um administrador com sessão iniciada.
 
 require_once __DIR__ . '/../conexao.php';
 

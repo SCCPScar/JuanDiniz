@@ -1,6 +1,5 @@
 // agendamento.js
-// Popula o formulário de agendamento, envia para a API e lista/cancela os
-// agendamentos do usuário logado.
+// Popula o formulário de marcação e envia para a API.
 
 (() => {
   const blocoLogado = document.getElementById('agendamentoLogado');
@@ -9,14 +8,6 @@
   const selectServico = document.getElementById('agendaServico');
   const campoData = document.getElementById('agendaData');
   const campoHora = document.getElementById('agendaHora');
-  const listaAgendamentos = document.getElementById('listaMeusAgendamentos');
-
-  const ROTULO_STATUS = {
-    Pendente: 'pendente',
-    Confirmado: 'confirmado',
-    Cancelado: 'cancelado',
-    'Concluído': 'concluído',
-  };
 
   function mostrarErro(mensagem) {
     const el = document.getElementById('agendaErro');
@@ -37,7 +28,7 @@
     botao.disabled = carregando;
   }
 
-  // A data mínima que dá pra escolher no calendário é hoje — evita que o
+  // A data mínima que dá para escolher no calendário é hoje — evita que o
   // cliente tente marcar um horário que já passou.
   function definirDataMinima() {
     if (!campoData) return;
@@ -57,70 +48,9 @@
         `<option value="${s.id_servico}">${s.nome} — € ${s.preco}</option>`
       ).join('');
     } catch {
-      selectServico.innerHTML = '<option value="">Erro ao carregar serviços</option>';
+      selectServico.innerHTML = '<option value="">Erro ao carregar os serviços</option>';
     }
   }
-
-  async function carregarMeusAgendamentos() {
-    if (!listaAgendamentos) return;
-
-    try {
-      const resp = await fetch('api/meus-agendamentos.php');
-      const agendamentos = await resp.json();
-
-      if (!Array.isArray(agendamentos) || agendamentos.length === 0) {
-        listaAgendamentos.innerHTML = '<li class="agendamento-vazio">Você ainda não tem agendamentos.</li>';
-        return;
-      }
-
-      listaAgendamentos.innerHTML = agendamentos.map((a) => `
-        <li class="agendamento-item" data-status="${a.status}">
-          <div>
-            <strong>${a.nome_servico}</strong>
-            <span>${a.data} às ${a.hora}${a.barbeiro ? ' — ' + a.barbeiro : ''}</span>
-            <span class="agendamento-status">${ROTULO_STATUS[a.status] || a.status}</span>
-          </div>
-          ${a.status === 'Pendente' || a.status === 'Confirmado'
-            ? `<button type="button" class="nav-link-btn btn-cancelar" data-id="${a.id_agendamento}">Cancelar</button>`
-            : ''}
-        </li>
-      `).join('');
-    } catch {
-      listaAgendamentos.innerHTML = '<li class="agendamento-vazio">Não foi possível carregar seus agendamentos.</li>';
-    }
-  }
-
-  listaAgendamentos?.addEventListener('click', async (e) => {
-    const botao = e.target.closest('.btn-cancelar');
-    if (!botao) return;
-
-    if (!confirm('Cancelar este agendamento?')) return;
-
-    botao.disabled = true;
-    botao.textContent = 'Cancelando...';
-
-    try {
-      const resp = await fetch('api/cancelar-agendamento.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_agendamento: botao.dataset.id }),
-      });
-      const dados = await resp.json();
-
-      if (!resp.ok) {
-        alert(dados.erro || 'Não foi possível cancelar.');
-        botao.disabled = false;
-        botao.textContent = 'Cancelar';
-        return;
-      }
-
-      carregarMeusAgendamentos();
-    } catch {
-      alert('Erro de conexão. Tente novamente.');
-      botao.disabled = false;
-      botao.textContent = 'Cancelar';
-    }
-  });
 
   async function verificarLoginEExibirFormulario() {
     try {
@@ -131,7 +61,6 @@
         blocoLogado.hidden = false;
         blocoDeslogado.hidden = true;
         carregarServicos();
-        carregarMeusAgendamentos();
       } else {
         blocoLogado.hidden = true;
         blocoDeslogado.hidden = false;
@@ -170,7 +99,7 @@
         const dados = await resp.json();
 
         if (!resp.ok) {
-          mostrarErro(dados.erro || 'Não foi possível agendar.');
+          mostrarErro(dados.erro || 'Não foi possível confirmar a marcação.');
           if ((dados.erro || '').includes('futuras')) {
             campoData.classList.add('campo-erro');
             campoHora.classList.add('campo-erro');
@@ -178,12 +107,11 @@
           return;
         }
 
-        mostrarSucesso(dados.mensagem || 'Agendamento realizado com sucesso!');
+        mostrarSucesso(dados.mensagem || 'Marcação confirmada com sucesso!');
         form.reset();
         definirDataMinima();
-        carregarMeusAgendamentos();
       } catch {
-        mostrarErro('Erro de conexão. Tente novamente.');
+        mostrarErro('Erro de ligação. Tente novamente.');
       } finally {
         definirCarregando(botao, false);
       }

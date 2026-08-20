@@ -1,6 +1,6 @@
 <?php
 // login.php
-// Confere e-mail/senha e cria a sessão do usuário.
+// Confere e-mail/palavra-passe e inicia a sessão do utilizador.
 
 require_once __DIR__ . '/conexao.php';
 
@@ -17,7 +17,7 @@ $senha = $dados['senha'] ?? '';
 
 if ($email === '' || $senha === '') {
     http_response_code(400);
-    echo json_encode(['erro' => 'Preencha e-mail e senha.']);
+    echo json_encode(['erro' => 'Preencha o e-mail e a palavra-passe.']);
     exit;
 }
 
@@ -28,7 +28,7 @@ $usuario = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
 if (!$usuario || !password_verify($senha, $usuario['senha_hash'])) {
     http_response_code(401);
-    echo json_encode(['erro' => 'E-mail ou senha incorretos.']);
+    echo json_encode(['erro' => 'E-mail ou palavra-passe incorretos.']);
     exit;
 }
 

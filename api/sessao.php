@@ -1,8 +1,8 @@
 <?php
 // sessao.php
-// Diz ao front-end se tem usuário logado (usado para trocar
-// "Entrar/Cadastrar" por "Olá, Nome" no menu, e para liberar o formulário
-// de agendamento).
+// Diz ao front-end se há sessão de utilizador iniciada (usado para trocar
+// "Entrar/Registar" por "Olá, Nome" no menu, e para libertar o formulário
+// de marcação).
 
 require_once __DIR__ . '/conexao.php';
 

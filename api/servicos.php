@@ -1,6 +1,6 @@
 <?php
 // servicos.php
-// Lista todos os serviços (rota pública, usada para popular o formulário de agendamento).
+// Lista todos os serviços (rota pública, usada para preencher o formulário de marcação).
 
 require_once __DIR__ . '/conexao.php';
 

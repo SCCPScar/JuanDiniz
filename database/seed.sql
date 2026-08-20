@@ -1,7 +1,7 @@
 -- seed.sql
 -- Dados de exemplo (opcional). Importe pelo phpMyAdmin DEPOIS do schema.sql,
--- com o banco "barbearia_odin" já selecionado, se quiser ver o site
--- funcionando com serviços e agendamentos de mentira.
+-- com a base de dados "barbearia_odin" já selecionada, se quiser ver o site
+-- a funcionar com serviços e agendamentos fictícios.
 
 SET NAMES utf8mb4;
 
@@ -32,7 +32,7 @@ INSERT INTO agendamentos (id_cliente, id_servico, barbeiro, data, hora, status, 
 );
 
 -- Administrador padrão para testar o painel em /admin
--- login: admin@barbeariaodin.pt   senha: admin123
--- (troque essa senha depois de importar, criando outro admin e apagando este)
+-- login: admin@barbeariaodin.pt   palavra-passe: admin123
+-- (troque esta palavra-passe depois de importar, criando outro admin e apagando este)
 INSERT INTO admins (nome, email, senha_hash) VALUES
 ('Administrador', 'admin@barbeariaodin.pt', '$2y$12$CUW5sULu.PkwM5xTjh/XheHKTJEG9BUipCfIt0w.gWy3COrwB9r3W');

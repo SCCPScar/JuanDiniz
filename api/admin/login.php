@@ -1,9 +1,9 @@
 <?php
 // admin/login.php
 // Login do painel administrativo. Usa uma sessão separada da sessão de
-// clientes ($_SESSION['admin_id'] em vez de $_SESSION['usuario_id']), então
-// dá pra estar logado como cliente e como admin ao mesmo tempo, em abas
-// diferentes.
+// clientes ($_SESSION['admin_id'] em vez de $_SESSION['usuario_id']), por
+// isso é possível ter sessão iniciada como cliente e como administrador ao
+// mesmo tempo, em separadores diferentes.
 
 require_once __DIR__ . '/../conexao.php';
 
@@ -20,7 +20,7 @@ $senha = $dados['senha'] ?? '';
 
 if ($email === '' || $senha === '') {
     http_response_code(400);
-    echo json_encode(['erro' => 'Preencha e-mail e senha.']);
+    echo json_encode(['erro' => 'Preencha o e-mail e a palavra-passe.']);
     exit;
 }
 
@@ -31,7 +31,7 @@ $admin = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
 if (!$admin || !password_verify($senha, $admin['senha_hash'])) {
     http_response_code(401);
-    echo json_encode(['erro' => 'E-mail ou senha incorretos.']);
+    echo json_encode(['erro' => 'E-mail ou palavra-passe incorretos.']);
     exit;
 }
 

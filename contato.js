@@ -1,5 +1,5 @@
 // contato.js
-// Envia o formulário de contato para a API.
+// Envia o formulário de contacto para a API.
 
 (() => {
   const form = document.getElementById('formContato');
@@ -49,7 +49,7 @@
       mostrarSucesso(dados.mensagem || 'Mensagem enviada!');
       form.reset();
     } catch {
-      mostrarErro('Erro de conexão. Tente novamente.');
+      mostrarErro('Erro de ligação. Tente novamente.');
     } finally {
       botao.classList.remove('btn-carregando');
       botao.disabled = false;

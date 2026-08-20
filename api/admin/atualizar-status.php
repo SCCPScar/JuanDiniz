@@ -1,6 +1,6 @@
 <?php
 // admin/atualizar-status.php
-// Muda o status de qualquer agendamento (Pendente, Confirmado, Concluído ou Cancelado).
+// Muda o estado de qualquer marcação (Pendente, Confirmado, Concluído ou Cancelado).
 
 require_once __DIR__ . '/../conexao.php';
 

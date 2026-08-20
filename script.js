@@ -18,14 +18,14 @@ if (navToggle && navLinks && nav) {
 
   navToggle.addEventListener('click', alternarMenu);
 
-  // Fecha o menu ao clicar em um link (útil em telas pequenas)
+  // Fecha o menu ao clicar num link (útil em ecrãs pequenos)
   navLinks.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', fecharMenu);
   });
 
-  // Fecha o menu ao clicar em Entrar/Cadastrar (eles abrem um modal por cima)
-  nav.querySelectorAll('.nav-auth button').forEach((btn) => {
-    btn.addEventListener('click', fecharMenu);
+  // Fecha o menu ao clicar em Entrar/Registar/Terminar sessão
+  nav.querySelectorAll('.nav-auth a, .nav-auth button').forEach((el) => {
+    el.addEventListener('click', fecharMenu);
   });
 
   // Fecha o menu com a tecla Esc
