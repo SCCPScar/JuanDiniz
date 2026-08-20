@@ -1,4 +1,4 @@
-// contato.js
+// contacto.js
 // Envia o formulário de contacto para a API.
 
 (() => {
@@ -34,7 +34,7 @@
     botao.disabled = true;
 
     try {
-      const resp = await fetch('api/contato.php', {
+      const resp = await fetch('api/contacto.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(corpo),

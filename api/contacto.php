@@ -1,5 +1,5 @@
 <?php
-// contato.php
+// contacto.php
 // Recebe o formulário de contacto e guarda na base de dados (tabela
 // mensagens_contato). Assim é possível ver as mensagens recebidas pelo
 // phpMyAdmin, sem ser preciso configurar um servidor de e-mail.
